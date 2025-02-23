@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="font-rancho">
             <NavBar></NavBar>
             <Outlet/>
         </div>
