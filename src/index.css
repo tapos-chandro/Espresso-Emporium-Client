@@ -4,7 +4,8 @@
 
 
 @theme {
-  --font-display: "Satoshi", "sans-serif";
+  --font-rancho: "Rancho", "serif";
+  --font-raleway:  "Raleway", serif;
   --breakpoint-3xl: 1920px;
   --color-avocado-100: oklch(0.99 0 0);
   --color-avocado-200: oklch(0.98 0.04 113.22);
@@ -15,5 +16,5 @@
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
   --navbar-bg:url(https://i.ibb.co.com/jv27HZ8B/15.jpg);
-  /* ... */
+
 }

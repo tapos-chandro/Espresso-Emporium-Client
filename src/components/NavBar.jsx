@@ -10,7 +10,7 @@ const NavBar = () => {
           alt=''
           className='w-16 mr-3 '
         />
-        <h1 className=' text-4xl text-white'>Espresso Emporium</h1>
+        <h1 className=' text-4xl text-white font-rancho'>Espresso Emporium</h1>
       </div>
     </div>
   );
