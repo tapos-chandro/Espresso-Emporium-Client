@@ -26,13 +26,13 @@ const CoffeeCard = ({ coffee }) => {
       </div>
       <div className="grid lg:grid-cols-1">
         <button className="bg-[#D2B48C] p-2 rounded my-1">
-          <Link to={""}>
+          <Link to={"/viewCoffee"}>
             <AiFillEye className="text-sm text-white " />
           </Link>
         </button>
 
         <button className="bg-[#3C393B] p-2 rounded my-1">
-          <Link to={`/update`}>
+          <Link to={`/updateCoffee`}>
             <AiFillEdit className="text-sm text-white " />
           </Link>
         </button>
