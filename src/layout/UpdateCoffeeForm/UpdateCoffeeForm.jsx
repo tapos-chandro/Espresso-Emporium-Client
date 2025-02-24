@@ -25,8 +25,8 @@ const UpdateCoffeeForm = () => {
     };
 
   return (
-    <div className="bg-add-coffee-bg bg-cover bg-no-repeat">
-      <div className="container mx-auto my-12 px-5">
+    <div className="">
+      <div className="container mx-auto my-12 px-5 max-w-6xl">
         <div>
           <button>
             <Link
@@ -38,7 +38,7 @@ const UpdateCoffeeForm = () => {
             </Link>
           </button>
         </div>
-        <div className=" bg-[#F4F3F0] rounded p-16">
+        <div className=" bg-[#F4F3F0] rounded md:p-16 p-5">
           <h1 className="text-center text-[#374151] text-4xl">
             Update Existing Coffee Details
           </h1>
@@ -50,7 +50,7 @@ const UpdateCoffeeForm = () => {
             to using Content here.
           </p>
           <form onSubmit={handleUpdateCoffee}>
-            <div className="grid lg:grid-cols-2 gap-6 font-raleway">
+            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-6 font-raleway">
               {Object.keys(formData).map((inputKey, index) => (
                 <InputForm
                   key={index}

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
-// import Swal from "sweetalert2";
 import { useState } from "react";
 import InputForm from "../../components/InputForm";
+import Swal from "sweetalert2";
 
 const AddCoffeeForm = () => {
   const [formData, setFormData] = useState({
@@ -22,48 +22,27 @@ const AddCoffeeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+
+    fetch("http://localhost:5000/addCoffee", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Successfully Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
-
-
-  //     https://i.ibb.co/sW0xLZm/3.png
-  // https://i.ibb.co/mbz4q97/4.png
-  // https://i.ibb.co/T4DyqWX/5.png
-  // https://i.ibb.co/kGQyx8d/6.png
-  // https://i.ibb.co/12W3v9p/1.png
-  // https://i.ibb.co/P50j8ng/2.png
-//   const handleAddCoffee = (event) => {
-//     event.preventDefault();
-//     const form = event.target;
-//     const name = form.name.value;
-//     const chef = form.chef.value;
-//     const supplier = form.supplier.value;
-//     const taste = form.taste.value;
-//     const category = form.category.value;
-//     const details = form.details.value;
-//     const photo = form.photo.value;
-//     const coffee = { name, chef, supplier, taste, category, details, photo };
-//     console.log(coffee);
-
-//     fetch("http://localhost:5000/coffees", {
-//       method: "POST",
-//       headers: {
-//         "content-type": "application/json",
-//       },
-//       body: JSON.stringify(coffee),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         if (data.insertedId) {
-//           Swal.fire({
-//             position: "center",
-//             icon: "success",
-//             title: "Successfully added",
-//             showConfirmButton: false,
-//             timer: 1500,
-//           });
-//         }
-//       });
-//   };
 
   return (
     <div>
@@ -80,7 +59,7 @@ const AddCoffeeForm = () => {
               </Link>
             </button>
           </div>
-          <div className=" bg-[#F4F3F0] rounded p-16">
+          <div className=" bg-[#F4F3F0] rounded md:p-16 lg:p-16 p-5">
             <h1 className="text-center text-[#374151] text-4xl">
               Add New Coffee
             </h1>
@@ -94,7 +73,12 @@ const AddCoffeeForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="grid lg:grid-cols-2 gap-6 font-raleway">
                 {Object.keys(formData).map((inputKey, index) => (
-                  <InputForm key={index} inputKey={inputKey} handleChange={handleChange} formData={formData}></InputForm>
+                  <InputForm
+                    key={index}
+                    inputKey={inputKey}
+                    handleChange={handleChange}
+                    formData={formData}
+                  ></InputForm>
                 ))}
               </div>
               <div className="form-control w-full font-raleway mt-7">

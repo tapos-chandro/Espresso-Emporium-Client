@@ -4,11 +4,11 @@ const InputForm = ({inputKey, handleChange, formData}) => {
 
       <div
         
-        className={
-          inputKey === "photo"
-            ? "col-span-2 className='form-control w-full'"
-            : " className='form-control w-full'"
-        }
+        className={` 
+          ${inputKey === "photo"
+            ? "col-span-2 form-control w-full"
+            : "lg:col-span-1 col-span-2 md:col-span-1"}
+        `}
       >
         <label className="block text-gray-600">
           {inputKey.charAt(0).toUpperCase() + inputKey.slice(1)}
