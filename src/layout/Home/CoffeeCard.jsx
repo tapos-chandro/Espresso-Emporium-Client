@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CoffeeCard = ({ coffee }) => {
   return (
-    <div className="card card-side bg-[#F5F4F1] pr-7 shadow-xl items-center flex justify-between lg:p-6">
+    <div className="card card-side bg-[#F5F4F1] pr-7 shadow-xl items-center flex justify-between lg:p-6  ">
       <div className="flex items-center p-6 justify-between  w-full">
         <figure>
           <img src={coffee.image} alt={coffee.name} className="w-28 h-28" />

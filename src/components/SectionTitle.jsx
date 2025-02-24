@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const SectionTitle = ({title, subTitle, linkText = null}) => {
   return (
     <div className="text-center mt-28">
-      <span className="text-xl text-[#1B1A1A] font-Raleway">
-        {subTitle}
+      <span className="text-xl text-[#1B1A1A] font-raleway">
+        --- {subTitle} ---
       </span>
       <h1 className="text-5xl text-[#331A15]">{title}</h1>
 {     linkText && <Link to={linkText}>

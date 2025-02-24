@@ -59,14 +59,14 @@ const CoffeeCards = () => {
 
   return (
     <div
-      className={`bg-[url('https://i.ibb.co.com/qMGx1CLH/1.png')] bg-cover bg-no-repeat pb-12 h-screen`}
+      className={`bg-[url('https://i.ibb.co.com/qMGx1CLH/1.png')] bg-cover bg-no-repeat pb-12 px-5`}
     >
       <SectionTitle
         title="Our Popular Products"
-        subTitle="--- Sip & Savor ---"
+        subTitle="Sip & Savor"
         linkText="/addCoffee"
       />
-          <div className=" py-12">
+          <div className="py-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
         {coffeeData.map( coffee => <CoffeeCard key={coffee.id} coffee={coffee} />)}
       </div>

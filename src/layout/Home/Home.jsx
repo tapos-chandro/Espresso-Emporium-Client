@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import CoffeeFeatures from "./CoffeeFeatures";
 import Products from "./CoffeeCards";
+import CoffeeGallery from "./CoffeeGallery";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner/>
             <CoffeeFeatures/>
             <Products/>
+            <CoffeeGallery/>
         </div>
     );
 };
