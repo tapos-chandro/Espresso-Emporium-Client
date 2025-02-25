@@ -5,21 +5,20 @@ const InputForm = ({inputKey, handleChange, formData}) => {
       <div
         
         className={` 
-          ${inputKey === "photo"
-            ? "col-span-2 form-control w-full"
-            : "lg:col-span-1 col-span-2 md:col-span-1"}
+          ${inputKey === "photo" ? "hidden": ""}
         `}
       >
         <label className="block text-gray-600">
           {inputKey.charAt(0).toUpperCase() + inputKey.slice(1)}
         </label>
         <input
-          type="text"
+          type='text'
           name={inputKey}
           value={formData[inputKey]}
           onChange={handleChange}
           placeholder={`Enter coffee ${inputKey}`}
           className="input input-bordered w-full"
+          required
         />
       </div>
   );
