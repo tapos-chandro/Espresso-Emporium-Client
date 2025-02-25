@@ -1,28 +1,112 @@
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import InputForm from "../../components/InputForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const UpdateCoffeeForm = () => {
+  const { _id } = useParams();
 
-    const [formData, setFormData] = useState({
-      name: "",
-      chef: "",
-      supplier: "",
-      taste: "",
-      category: "",
-      details: "",
-      photo: "",
-    });
+  const [formCoffeeData, setFormCoffeeData] = useState({
+    name: "",
+    chef: "",
+    supplier: "",
+    taste: "",
+    category: "",
+    details: "",
+    photo: "",
+  });
 
-    const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e) => {
+    if (e.target.name === "photo") {
+      setFormCoffeeData({ ...formCoffeeData, photo: e.target.files[0] }); // Store the File object
+    } else {
+      setFormCoffeeData({ ...formCoffeeData, [e.target.name]: e.target.value });
+    }
+  };
 
-    const handleUpdateCoffee = (e) => {
-      e.preventDefault();
-      console.log(formData);
-    };
+  const handleUpdateCoffee = async (e) => {
+    e.preventDefault();
+
+
+
+
+    const formData = new FormData()
+    formData.append('image', formCoffeeData.photo)
+
+    try {
+
+      const response = await fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY}`,{
+        method:'POST',
+        body: formData,
+      })
+
+      const data = await response.json()
+      
+      console.log(data.data.url)
+
+      const updateData = {...formCoffeeData, photo: data?.data?.url}
+
+
+     fetch(`http://localhost:5000/updateCoffee`, {
+        method: "PATCH",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify(updateData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.acknowledged === true){
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Successfully Update",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+        }
+      })
+
+
+      
+      
+    } catch (error) {
+      console.log(error.message)
+    }
+
+
+
+
+
+
+
+
+    
+
+  };
+
+
+
+
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/coffee/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFormCoffeeData({
+          id: data._id || "",
+          name: data.name || "",
+          chef: data.chef || "",
+          supplier: data.supplier || "",
+          taste: data.taste || "",
+          category: data.category || "",
+          details: data.details || "",
+          photo: data.photo || ""
+        });
+      });
+  }, []);
 
   return (
     <div className="">
@@ -51,14 +135,27 @@ const UpdateCoffeeForm = () => {
           </p>
           <form onSubmit={handleUpdateCoffee}>
             <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-6 font-raleway">
-              {Object.keys(formData).map((inputKey, index) => (
+              {Object.keys(formCoffeeData).map((inputKey, index) => (
                 <InputForm
                   key={index}
                   inputKey={inputKey}
                   handleChange={handleChange}
-                  formData={formData}
+                  formData={formCoffeeData}
                 ></InputForm>
               ))}
+            </div>
+
+            <div className="col-span-2 pt-6">
+              <label htmlFor="photo" className="font-raleway text-gray-600">
+                Photo
+              </label>
+              <br />
+              <input
+                type="file"
+                name="photo"
+                className="p-2 w-full bg-white border font-raleway text-gray-600 border-[#5351515f]"
+                onChange={handleChange}
+              />
             </div>
 
             <div className="form-control w-full font-Raleway mt-7">

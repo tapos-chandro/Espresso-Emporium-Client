@@ -1,60 +1,73 @@
 
+import { useEffect, useState } from "react";
 import SectionTitle from "../../components/SectionTitle";
 import CoffeeCard from "./CoffeeCard";
 
 const CoffeeCards = () => {
   
 
+  const [coffeeData, setCoffeeData] = useState([])
+
+
+  useEffect(() => {
+    fetch('http://localhost:5000/addCoffee')
+    .then(res => res.json())
+    .then(data => {
+      // console.log(data)
+      setCoffeeData(data)
+    })  
+    
+  },[])
 
 
 
 
 
 
-  const coffeeData = [
-    {
-      id: 1,
-      name: "Americano Coffee",
-      chef: "Mr. Milan Paul",
-      price: "890 Taka",
-      image: "https://i.ibb.co.com/TD2vTW9s/5.png",
-    },
-    {
-      id: 2,
-      name: "Black Coffee",
-      chef: "Mr. Martin Soderan",
-      price: "890 Taka",
-      image: "https://i.ibb.co.com/YT16RJWH/6.png",
-    },
-    {
-      id: 3,
-      name: "Espresso Coffee",
-      chef: "Mrs. Malisha",
-      price: "890 Taka",
-      image: "https://i.ibb.co.com/KzswPfKn/1.png",
-    },
-    {
-      id: 4,
-      name: "Cappuccino Coffee",
-      chef: "Mr. Arnold",
-      price: "890 Taka",
-      image: "https://i.ibb.co.com/0yV5kq4K/2.png",
-    },
-    {
-      id: 5,
-      name: "Macchiato",
-      chef: "Mr. Matrid",
-      price: "890 Taka",
-      image: "https://i.ibb.co.com/QFKNH3QM/3.png",
-    },
-    {
-      id: 6,
-      name: "Decaf Coffee",
-      chef: "Mr. Matrid",
-      price: "890 Taka",
-      image: "https://i.ibb.co.com/RTsCKRBg/4.png",
-    },
-  ];
+  // const coffeeData = [
+  //   {
+  //     id: 1,
+  //     name: "Americano Coffee",
+  //     chef: "Mr. Milan Paul",
+  //     price: "890 Taka",
+  //     image: "https://i.ibb.co.com/TD2vTW9s/5.png",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Black Coffee",
+  //     chef: "Mr. Martin Soderan",
+  //     price: "890 Taka",
+  //     image: "https://i.ibb.co.com/YT16RJWH/6.png",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Espresso Coffee",
+  //     chef: "Mrs. Malisha",
+  //     price: "890 Taka",
+  //     image: "https://i.ibb.co.com/KzswPfKn/1.png",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Cappuccino Coffee",
+  //     chef: "Mr. Arnold",
+  //     price: "890 Taka",
+  //     image: "https://i.ibb.co.com/0yV5kq4K/2.png",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Macchiato",
+  //     chef: "Mr. Matrid",
+  //     price: "890 Taka",
+  //     image: "https://i.ibb.co.com/QFKNH3QM/3.png",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Decaf Coffee",
+  //     chef: "Mr. Matrid",
+  //     price: "890 Taka",
+  //     image: "https://i.ibb.co.com/RTsCKRBg/4.png",
+  //   },
+  // ];
 
 
   return (

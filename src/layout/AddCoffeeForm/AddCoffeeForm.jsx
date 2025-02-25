@@ -13,6 +13,7 @@ const AddCoffeeForm = () => {
     category: "",
     details: "",
     photo: "",
+    price: ""
   });
 
   const handleChange = (e) => {
@@ -31,11 +32,10 @@ const AddCoffeeForm = () => {
     const formData = new FormData();
     formData.append("image", addData?.photo);
 
-    const API_KEY = "27b4111e428556b68873c942ee303a27";
 
     try {
       // 🔹 Upload Image to ImgBB
-      const response = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
+      const response = await fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API_KEY}`, {
         method: "POST",
         body: formData,
       });
@@ -62,6 +62,15 @@ const AddCoffeeForm = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            setAddData({    name: "",
+              chef: "",
+              supplier: "",
+              taste: "",
+              category: "",
+              details: "",
+              photo: "",
+              price:""
+            })
           }
         });
     } catch (error) {

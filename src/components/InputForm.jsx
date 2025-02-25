@@ -5,7 +5,7 @@ const InputForm = ({inputKey, handleChange, formData}) => {
       <div
         
         className={` 
-          ${inputKey === "photo" ? "hidden": ""}
+          ${inputKey === "photo" || inputKey === "id" ? "hidden": ""}
         `}
       >
         <label className="block text-gray-600">

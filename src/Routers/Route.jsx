@@ -4,7 +4,7 @@ import Home from "../layout/Home/Home";
 import AddCoffeeForm from "../layout/AddCoffeeForm/AddCoffeeForm";
 import UpdateCoffeeForm from "../layout/UpdateCoffeeForm/UpdateCoffeeForm";
 import ViewCoffee from "../layout/ViewCoffee/ViewCoffee";
-// import {AddCoffeeForm} from "../layout/AddCoffeeForm/AddCoffeeForm";
+
 
 
 export const router = createBrowserRouter([
@@ -21,11 +21,11 @@ export const router = createBrowserRouter([
             element: <AddCoffeeForm/>
         },
         {
-            path:'/updateCoffee',
+            path:'/updateCoffee/:_id',
             element: <UpdateCoffeeForm></UpdateCoffeeForm>
         },
         {
-            path:'/viewCoffee',
+            path:'/viewCoffee/:_id',
             element:<ViewCoffee></ViewCoffee>
         }
         ]

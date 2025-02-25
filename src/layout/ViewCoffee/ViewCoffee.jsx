@@ -1,14 +1,31 @@
+import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ViewCoffee = () => {
-  const coffee = {
-    id: 6,
-    name: "Decaf Coffee",
-    chef: "Mr. Matrid",
-    price: "890 Taka",
-    image: "https://i.ibb.co.com/RTsCKRBg/4.png",
-  };
+  const params = useParams()
+  console.log(params._id)
+
+  const [coffee, setCoffee] = useState([])
+
+  // const coffee = {
+  //   id: 6,
+  //   name: "Decaf Coffee",
+  //   chef: "Mr. Matrid",
+  //   price: "890 Taka",
+  //   image: "https://i.ibb.co.com/RTsCKRBg/4.png",
+  // };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/coffee/${params._id}`)
+    .then(res => res.json())
+    .then(data => {
+      setCoffee(data)
+    })
+  },[])
+
+
+
 
   return (
     <div className="max-w-6xl mx-auto p-5">
@@ -19,7 +36,7 @@ const ViewCoffee = () => {
 
       <div className="flex items-center justify-between bg-[#F4F3F0] rounded lg:p-16 lg:gap-6  max-w-2xl mx-auto">
         <figure>
-          <img src={coffee.image} alt={coffee.name} className="" />
+          <img src={coffee.photo} alt={coffee.name} className="" />
         </figure>
         <div className="w-2/3">
             <h1><span className="text-[#331a15]  font-bold text-3xl"> {coffee.name}</span></h1>
