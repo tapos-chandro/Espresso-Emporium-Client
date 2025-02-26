@@ -5,10 +5,9 @@ import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee }) => {
   const handleDelate = (id) => {
-    console.log(id);
 
     try {
-      fetch(`http://localhost:5000/coffee/${id}`, {
+      fetch(`https://espresso-emporium-server-beryl.vercel.app/coffee/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

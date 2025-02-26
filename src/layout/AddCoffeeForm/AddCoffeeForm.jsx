@@ -45,7 +45,7 @@ const AddCoffeeForm = () => {
       // 🔹 Send Data to Backend with ImgBB URL
       const updatedData = { ...addData, photo: imgData.data.url };
 
-      fetch("http://localhost:5000/addCoffee", {
+      fetch("https://espresso-emporium-server-beryl.vercel.app/addCoffee", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

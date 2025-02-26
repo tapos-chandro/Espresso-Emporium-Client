@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
         {
             path:'/viewCoffee/:_id',
             element:<ViewCoffee></ViewCoffee>
+        },
+        {
+            path: '*',
+            element: <p>Page Not Found</p>
         }
         ]
     },

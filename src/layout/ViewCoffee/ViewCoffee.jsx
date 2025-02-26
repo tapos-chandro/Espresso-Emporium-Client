@@ -17,7 +17,7 @@ const ViewCoffee = () => {
   // };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/coffee/${params._id}`)
+    fetch(`https://espresso-emporium-server-beryl.vercel.app/coffee/${params._id}`)
     .then(res => res.json())
     .then(data => {
       setCoffee(data)

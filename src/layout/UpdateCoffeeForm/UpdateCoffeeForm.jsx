@@ -48,7 +48,7 @@ const UpdateCoffeeForm = () => {
       const updateData = {...formCoffeeData, photo: data?.data?.url}
 
 
-     fetch(`http://localhost:5000/updateCoffee`, {
+     fetch(`https://espresso-emporium-server-beryl.vercel.app/updateCoffee`, {
         method: "PATCH",
         headers:{
           "Content-Type": "application/json"
@@ -91,7 +91,7 @@ const UpdateCoffeeForm = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/coffee/${_id}`)
+    fetch(`https://espresso-emporium-server-beryl.vercel.app/coffee/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -10,7 +10,7 @@ const CoffeeCards = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/addCoffee')
+    fetch('https://espresso-emporium-server-beryl.vercel.app/addCoffee')
     .then(res => res.json())
     .then(data => {
       // console.log(data)
@@ -81,7 +81,7 @@ const CoffeeCards = () => {
       />
           <div className="py-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-        {coffeeData.map( coffee => <CoffeeCard key={coffee.id} coffee={coffee} />)}
+        {coffeeData.map( coffee => <CoffeeCard key={coffee._id} coffee={coffee} />)}
       </div>
     </div>
     </div>

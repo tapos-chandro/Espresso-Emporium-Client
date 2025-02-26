@@ -9,7 +9,7 @@ const CoffeeGallery = () => {
     "https://i.ibb.co.com/dYRfp8h/Rectangle-9.png",
     "https://i.ibb.co.com/5hnsqMzR/Rectangle-10.png",
     "https://i.ibb.co.com/wFvKypfz/Rectangle-11.png",
-    "zhttps://i.ibb.co.com/ptPkx6c/Rectangle-12.png",
+    "https://i.ibb.co.com/ptPkx6c/Rectangle-12.png",
   ];
 
   return (
